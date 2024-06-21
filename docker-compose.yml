@@ -1,13 +1,13 @@
 services:
   postgres:
-    container_name: nest-clean-pg
+    container_name: nest-clean-pg-dev
     image: postgres
     ports:
       - 5432:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
-      POSTGRES_DB: nest-clean
-      PGDATA: /data/postgres
+      POSTGRES_DB: nest-clean-dev
+      PGDATA: /data/postgres-dev
     volumes:
-      - ./data/pg:/data/postgres
+      - ./data/pg:/data/postgres-dev

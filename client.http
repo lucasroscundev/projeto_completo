@@ -1,14 +1,15 @@
 @baseUrl = http://localhost:3333
 @authToken = {{authenticate.response.body.access_token}}
+@questionId = 
 
 # @name create_account
 POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-    "name": "John Wick",
-    "email": "boogeyman@example.com.br",
-    "password": "666999"
+    "name": "John Wick1",
+    "email": "boogeyman@example2.com.br",
+    "password": "6669992"
 }
 
 ###
@@ -18,8 +19,8 @@ POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-    "email": "boogeyman@example.com.br",
-    "password": "666999"
+    "email": "boogeyman@example2.com.br",
+    "password": "6669992"
 }
 
 ###
@@ -30,8 +31,8 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "title": "John's Check",
-    "content": "Are you sure you want to do this?"
+    "title": "John's Check2",
+    "content": "Are you sure you want to do this?2"
 }
 
 ###
@@ -40,3 +41,25 @@ Authorization: Bearer {{authToken}}
 GET {{baseUrl}}/questions?page=1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
+
+###
+
+# @name answer_question
+POST {{baseUrl}}/questions/1d124415-77f9-4064-bd94-d79d60606f7f/answers
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "content": "Yes, let's dance! >)"
+}
+
+###
+
+# @name get_question-by_slug
+GET {{baseUrl}}/questions/johns-check
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+#

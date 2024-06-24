@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -90,3 +91,20 @@ model Attachment {
 
   @@map("attachments")
 }
+
+model Auth0User {
+  id       String   @id @default(uuid())
+  email    String   @unique
+  name     String
+  nickname String
+  picture String
+  email_verified Boolean
+  given_name String
+  family_name String
+  is_auth0_user Boolean
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")  
+
+  @@map("auth0Users")
+}
+

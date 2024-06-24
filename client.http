@@ -7,9 +7,9 @@ POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-    "name": "John Wick1",
-    "email": "boogeyman@example2.com.br",
-    "password": "6669992"
+    "name": "Test Zombie",
+    "email": "iwantyourbrain@undead.co",
+    "password": "000brains999"
 }
 
 ###
@@ -19,8 +19,8 @@ POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-    "email": "boogeyman@example2.com.br",
-    "password": "6669992"
+    "email": "iwantyourbrain@undead.co",
+    "password": "000brains999"
 }
 
 ###
@@ -31,8 +31,8 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "title": "John's Check2",
-    "content": "Are you sure you want to do this?2"
+    "title": "Zombie Negotiation",
+    "content": "What would you like for your brain? :)"
 }
 
 ###
@@ -45,21 +45,106 @@ Authorization: Bearer {{authToken}}
 ###
 
 # @name answer_question
-POST {{baseUrl}}/questions/1d124415-77f9-4064-bd94-d79d60606f7f/answers
+POST {{baseUrl}}/questions/77fbcfab-007a-4896-9ced-214b61b1aede/answers
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "content": "Yes, let's dance! >)"
+    "content": "Uh, I love sushi-fed brains..."
 }
 
 ###
 
 # @name get_question-by_slug
-GET {{baseUrl}}/questions/johns-check
+GET {{baseUrl}}/questions/zombie-check
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 ###
 
-#
+# @name edit_question
+PUT {{baseUrl}}/questions/c110d0c8-f40f-48b0-92d0-a42e57696e2e
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "title": "John's Request",
+    "content": "Do you know what happened to the last guys that hurt my dog?"
+}
+
+###
+
+# @name fetch_question_answers
+GET {{baseUrl}}/questions/1d124415-77f9-4064-bd94-d79d60606f7f/answers?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name edit_answer
+PUT {{baseUrl}}/answers/289fcf22-be98-40e6-8ed5-cf23ebab116d
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "content": "Uh, I love cake-fed brains..."
+}
+
+###
+
+# @name delete_question
+DELETE {{baseUrl}}/questions/d73e11a2-148e-4b99-8e39-3dd145665430
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name delete_answer
+DELETE {{baseUrl}}/answers/289fcf22-be98-40e6-8ed5-cf23ebab116d
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name choose_best_answer
+PATCH {{baseUrl}}/answers/ef685e6e-3308-43c3-b515-f63fdc1f8314/choose-as-best
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name comment_question
+POST {{baseUrl}}/questions/c110d0c8-f40f-48b0-92d0-a42e57696e2e/comments
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "content": "I'm afraid anyone who sees this guy is in danger..."
+}
+
+###
+
+# @name comment_answer
+POST {{baseUrl}}/answers/21132106-ef34-4f33-bb84-a4684486c3b4/comments
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "content": "Would you like tango or a waltz?"
+}
+
+###
+
+# @name delete_answer_comment
+DELETE {{baseUrl}}/answers/comments/aa6b6613-7326-45f8-9fff-f0296c69da20
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name delete_question_comment
+DELETE {{baseUrl}}/questions/comments/f767a91d-4d5e-46fd-b97a-c7b5dd5350f2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###

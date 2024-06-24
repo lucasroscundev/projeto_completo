@@ -2,7 +2,7 @@ import { Entity } from '@/core/entities/entity'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Optional } from '@/core/types/optional'
 
-export interface Auth0UserProps {
+export interface UserProps {
   email: string
   name: string  
   nickname: string
@@ -15,7 +15,7 @@ export interface Auth0UserProps {
   updatedAt?: Date | null
 }
 
-export class Auth0User extends Entity<Auth0UserProps> {
+export class User extends Entity<UserProps> {
   get email() {
     return this.props.email
   }
@@ -101,10 +101,10 @@ export class Auth0User extends Entity<Auth0UserProps> {
   }
 
   static create(
-    props: Optional<Auth0UserProps, 'nickname' | 'picture' | 'email_verified' | 'is_auth0_user' | 'createdAt'>, 
+    props: Optional<UserProps, 'nickname' | 'picture' | 'email_verified' | 'is_auth0_user' | 'createdAt'>, 
     id?: UniqueEntityID,
   ) {
-    const user = new Auth0User(
+    const user = new User(
       {
         ...props,
         nickname: props.nickname ?? "",

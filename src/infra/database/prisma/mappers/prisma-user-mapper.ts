@@ -1,10 +1,10 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { Auth0User } from '@/domain/forum/enterprise/entities/auth0-user'
+import { User } from '@/domain/forum/enterprise/entities/user'
 import { Auth0User as PrismaUser, Prisma } from '@prisma/client'
 
-export class PrismaAuth0UserMapper {
-  static toDomain(raw: PrismaUser): Auth0User {
-    return Auth0User.create(
+export class PrismaUserMapper {
+  static toDomain(raw: PrismaUser): User {
+    return User.create(
       {
         email: raw.email,
         name: raw.name,
@@ -21,7 +21,7 @@ export class PrismaAuth0UserMapper {
     )
   }
 
-  static toPrisma(user: Auth0User): Prisma.Auth0UserUncheckedCreateInput {
+  static toPrisma(user: User): Prisma.Auth0UserUncheckedCreateInput {
     return {
       id: user.id.toString(),
       email: user.email,

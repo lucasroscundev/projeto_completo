@@ -1,10 +1,10 @@
 import { Either, left, right } from '@/core/either'
 import { HashGenerator } from '../cryptography/hash-generator'
-import { Auth0UsersRepository } from '../repositories/auth0-users-repository'
-import { Auth0User } from '../../enterprise/entities/auth0-user'
-import { Auth0UserAlreadyExistsError } from './errors/auth0-user-already-exists-error'
+import { UsersRepository } from '../repositories/users-repository'
+import { UserAlreadyExistsError } from './errors/user-already-exists-error'
+import { User } from '../../enterprise/entities/user'
 
-interface RegisterAuth0UserUseCaseRequest {
+interface CreateUserUseCaseRequest {
     email: string
     name: string  
     nickname: string
@@ -16,16 +16,16 @@ interface RegisterAuth0UserUseCaseRequest {
     createdAt: Date    
 }
 /* TODO - Alter type to UpdateAuth0User */
-type RegisterAuth0UserUseCaseResponse = Either<
-  Auth0UserAlreadyExistsError,
+type CreateUserUseCaseResponse = Either<
+  UserAlreadyExistsError,
   {
-    user: Auth0User
+    user: User
   }
 >
 
-export class RegisterAuth0UserUseCase {
+export class CreateUserUseCase {
   constructor(
-    private auth0usersRepository: Auth0UsersRepository,
+    private usersRepository: UsersRepository,
     private hashGenerator: HashGenerator,
   ) {}
 
@@ -39,21 +39,21 @@ export class RegisterAuth0UserUseCase {
     family_name,
     is_auth0_user,
     createdAt,    
-  }: RegisterAuth0UserUseCaseRequest): Promise<RegisterAuth0UserUseCaseResponse> {
+  }: CreateUserUseCaseRequest): Promise<CreateUserUseCaseResponse> {
     const userWithSameEmail =
-      await this.auth0usersRepository.findByEmail(email)
+      await this.usersRepository.findByEmail(email)
 
     /* TODO - Change error to saveAuth0user */
       if (userWithSameEmail) {
      /* TODO - Alter to function UpdateAuth0User */
-      return left(new Auth0UserAlreadyExistsError(email))
+      return left(new UserAlreadyExistsError(email))
     }
 
     
     //const hashedPassword = await this.hashGenerator.hash(password)
     
 
-    const user = Auth0User.create({
+    const user = User.create({
         email,
         name,
         nickname,
@@ -65,7 +65,7 @@ export class RegisterAuth0UserUseCase {
         createdAt,       
     })
 
-    await this.auth0usersRepository.create(user)
+    await this.usersRepository.create(user)
 
     return right({
       user,

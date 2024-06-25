@@ -1,6 +1,6 @@
 {
-    "cSpell.words": [
-        "encrypter"
-    ],
-    "DockerRun.DisableDockerrc": true
+  "cSpell.words": ["encrypter"],
+  "DockerRun.DisableDockerrc": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }

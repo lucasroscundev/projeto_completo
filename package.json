@@ -1,10 +1,11 @@
 {
-  "name": "05-nest-clean",
+  "name": "projeto_completo",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",  
+  "license": "UNLICENSED",
+
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -30,7 +31,6 @@
     "@prisma/client": "^5.16.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
-    "cjs": "^0.0.11",
     "cjs-module": "^1.5.0",
     "dayjs": "^1.11.11",
     "eslint-plugin-compat": "^4.2.0",

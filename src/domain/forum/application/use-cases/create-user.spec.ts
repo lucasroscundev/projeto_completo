@@ -3,6 +3,7 @@ import { CreateUserUseCase } from './create-user'
 import { FakeHasher } from 'test/cryptography/fake-hasher'
 import { makeUser } from 'test/factories/make-user'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { User } from '../../enterprise/entities/user'
 
 let inMemoryUsersRepository: InMemoryUsersRepository
 
@@ -39,7 +40,7 @@ describe('Create User', () => {
         createdAt: new Date(),
     })
 
-    expect(result).toBe(true)
+    expect(result).contain(User) //toBe(true) //toBeInstanceOf(CreateUserUseCaseResponse)
     expect(inMemoryUsersRepository.items[0].email).toEqual(result.user.email)   
   })
 })

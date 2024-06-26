@@ -1,12 +1,18 @@
 import swc from 'unplugin-swc'
-import { defineConfig } from 'vitest/config'
+import { configDefaults, defineConfig } from 'vitest/config'
 import tsConfigPaths from 'vite-tsconfig-paths'
+
+const cacheDir =
+  process.env.NODE_ENV === 'development-docker'
+    ? '/app/node_modules/.vite'
+    : 'node_modules/.vite'
 
 export default defineConfig({
   test: {
     globals: true,
     root: './',
-  },
+    exclude: [...configDefaults.exclude, 'packages/template/*'],
+  },  
   plugins: [
     tsConfigPaths(),
     // This is required to build the test files with SWC
@@ -15,4 +21,5 @@ export default defineConfig({
       module: { type: 'es6' },
     }),
   ],
+  cacheDir,
 })

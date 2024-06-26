@@ -16,7 +16,7 @@ interface CreateUserUseCaseRequest {
     createdAt: Date    
 }
 
-type CreateUserUseCaseResponse =  
+export type CreateUserUseCaseResponse =  
   {
     user: User
   }

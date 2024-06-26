@@ -24,8 +24,7 @@ const createUserBodySchema = z.object({
   givenName: z.string(),
   familyName: z.string(),
   isAuthUser: z.boolean(),
-  createdAt: z.date(),
-});
+})
 
 type CreateUserBodySchema = z.infer<typeof createUserBodySchema>;
 
@@ -51,7 +50,6 @@ export class CreateUserController {
       givenName,
       familyName,
       isAuthUser,
-      createdAt,
     } = body
 
     const result = await this.createUser.execute({
@@ -63,7 +61,7 @@ export class CreateUserController {
       givenName,
       familyName,
       isAuthUser,
-      createdAt,
+      createdAt: new Date(),
     })
 
     return result

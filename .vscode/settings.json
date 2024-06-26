@@ -1,6 +1,11 @@
 {
   "cSpell.words": ["encrypter"],
   "DockerRun.DisableDockerrc": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnType": false, // required
+  "editor.formatOnPaste": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save  
+  "vs-code-prettier-eslint.prettierLast": false // set as "true" to run 'prettier' last not 
 }

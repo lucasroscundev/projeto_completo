@@ -1,15 +1,15 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["compat",
-    "@typescript-eslint",],
-    "extends": ["@rocketseat/eslint-config/node",
-    "plugin:compat/recommended",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "@rocketseat/eslint-config/node",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"],
-    "rules": {
-        "no-useless-constructor": "off",
-        "no-new": "off",
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": ["error"]
-    }
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-useless-constructor": "off",
+    "no-new": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
+  }
 }

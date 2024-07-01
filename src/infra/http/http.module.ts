@@ -35,6 +35,8 @@ import { DeleteAnswerCommentController } from "./controllers/delete-answer-comme
 import { NestDeleteAnswerCommentUseCase } from "../representations/nest-delete-answer-comment-use-case";
 import { CreateUserController } from "./controllers/create-user.controller";
 import { NestCreateUserUseCase } from "../representations/nest-create-user-use-case";
+import { NestUpdateUserUseCase } from "../representations/nest-update-user-use-case";
+import { UpdateUserController } from "./controllers/update-user-controller";
 
 @Module({
   imports: [DataBaseModule, CryptographyModule],
@@ -56,6 +58,7 @@ import { NestCreateUserUseCase } from "../representations/nest-create-user-use-c
     CommentOnAnswerController,
     DeleteAnswerCommentController,
     CreateUserController,
+    UpdateUserController,
   ],
   providers: [
     NestCreateQuestionUseCase,
@@ -75,6 +78,7 @@ import { NestCreateUserUseCase } from "../representations/nest-create-user-use-c
     NestCommentOnAnswerUseCase,
     NestDeleteAnswerCommentUseCase,
     NestCreateUserUseCase,
+    NestUpdateUserUseCase,
   ],
 })
 export class HttpModule {}

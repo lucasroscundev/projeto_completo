@@ -52,14 +52,17 @@ export class CreateUserUseCase {
     familyName,
     isAuthUser,
     createdAt,       
-    })
+     
+    }, userAlreadyExists?.id)
 
     
     if(userAlreadyExists) {
       await this.usersRepository.update(user)      
+    } else {
+      await this.usersRepository.create(user)
     }    
     
-    await this.usersRepository.create(user)
+    
 
     return ({
       user,

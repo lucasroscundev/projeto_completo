@@ -13,9 +13,11 @@ export interface UserProps {
   isAuthUser: boolean
   createdAt: Date
   updatedAt?: Date | null
+ 
 }
 
 export class User extends Entity<UserProps> {
+   
   get email() {
     return this.props.email
   }
